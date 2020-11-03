@@ -19,9 +19,13 @@ def guardar_archivo(extension, campos):
         while guardar == "si":
             empleado = {}
             for campo in campos:
-                empleado[campo] = input(f"Ingrese {campo} del empleado ")
+                
                 if campo == campos[0] or campo ==campos[3]:
-                   empleado[campo]= verific_dato(campo, empleado[campo])
+                    valor = input(f"Ingrese {campo} del empleado ")
+                    empleado[campo]= verific_dato(campo, valor)
+                else:
+                    empleado[campo] = input(f"Ingrese {campo} del empleado ")
+
             lista_empleados.append(empleado)      
             guardar = input("\n Desea seguir agregando empleados? Si/No : ")
         
@@ -51,7 +55,7 @@ def leer_archiv_csv(archivo):
             for linea in lectura_csv:
                 lista.append(linea)
     except IOError:
-        print("\n Ocurrrio un error en el archivo",error)
+        print("\n Ocurrrio un error en el archivo" )
     
     return lista
 
